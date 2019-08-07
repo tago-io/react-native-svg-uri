@@ -289,6 +289,9 @@ class SvgUri extends Component{
       ).replace(/<!-(.*?)->/g, '');
 
       const doc = new xmldom.DOMParser().parseFromString(inputSVG);
+      if (this.state.fill) {
+        doc.childNodes[0].setAttribute("fill", this.state.fill);
+      }
 
       const rootSVG = this.inspectNode(doc.childNodes[0]);
 
